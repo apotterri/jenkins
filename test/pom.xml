@@ -207,7 +207,7 @@ THE SOFTWARE.
     <dependency>
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
-      <version>3.19.0-GA</version>
+      <version>3.25.0-GA</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -272,8 +272,9 @@ THE SOFTWARE.
         <artifactId>maven-surefire-plugin</artifactId>
         <!-- version specified in grandparent pom -->
         <configuration>
-          <argLine>${jacocoSurefireArgs} -Dfile.encoding=UTF-8 -Xmx1g -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+          <argLine>-javaagent:/Users/ajp/dev/app.land/appmap-java/build/libs/appmap-java-all.jar -Dappmap.config.file=/Users/ajp/src/jenkins/appmap.yml -Dappmap.output.directory=/Users/ajp/src/jenkins ${jacocoSurefireArgs} -Dfile.encoding=UTF-8 -Xmx1g -Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
           <systemPropertyVariables>
+            
               <!-- use AntClassLoader that supports predictable file handle release -->
               <hudson.ClassicPluginStrategy.useAntClassLoader>true</hudson.ClassicPluginStrategy.useAntClassLoader>
               <hudson.maven.debug>${mavenDebug}</hudson.maven.debug>
